@@ -1,0 +1,117 @@
+{
+  "name": "spiral",
+  "displayName": "spiral",
+  "description": "Kakuone features, no modal editing",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "spiral.select.nextword",
+        "title": "Spiral move one word forwards"
+      },
+      {
+        "command": "spiral.select.previousword",
+        "title": "Spiral move one word backwards"
+      },
+      {
+        "command": "spiral.select.nextwordsep",
+        "title": "Spiral move one word forwards including separators"
+      },
+      {
+        "command": "spiral.select.previouswordsep",
+        "title": "Spiral move one word backwards including separators"
+      },
+      {
+        "command": "spiral.select.nextblock",
+        "title": "Spiral move one block forwards"
+      },
+      {
+        "command": "spiral.select.previousblock",
+        "title": "Spiral move one block back"
+      },
+      {
+        "command": "spiral.select.tochar",
+        "title": "Spiral move to typed character"
+      },
+      {
+        "command": "spiral.jump.tochar",
+        "title": "Spiral jump to typed character"
+      },
+      {
+        "command": "spiral.filter.selections",
+        "title": "Spiral filter selections"
+      }
+  ],
+    "keybindings": [
+      {
+        "key": "Alt-Right",
+        "title": "Spiral move one word forwards",
+        "command": "spiral.select.nextword"
+      },
+      {
+        "key": "Alt-Left",
+        "title": "Spiral move one word backwards",
+        "command": "spiral.select.previousword"
+      },
+      {
+        "key": "Alt-Shift-Right",
+        "title": "Spiral move one word forwards including separators",
+        "command": "spiral.select.nextwordsep"
+      },
+      {
+        "key": "Alt-Shift-Left",
+        "title": "Spiral move one word backwards including separators",
+        "command": "spiral.select.previouswordsep"
+      },
+      {
+        "key": "Alt-Shift-Down",
+        "title": "Spiral move one blcok forwards",
+        "command": "spiral.select.nextblock"
+      },
+      {
+        "key": "Alt-Shift-Up",
+        "title": "Spiral move one blcok back",
+        "command": "spiral.select.previousblock"
+      },
+      {
+        "key": "Alt-f",
+        "title": "Spiral select to char inclusive",
+        "command": "spiral.select.tochar"
+      },
+      {
+        "key": "Alt-g",
+        "title": "Spiral jump to char inclusive",
+        "command": "spiral.jump.tochar"
+      },
+      {
+        "key": "Alt-/",
+        "title": "Spiral filter selections",
+        "command": "spiral.filter.selections"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.78.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4",
+    "@vscode/test-electron": "^2.3.0"
+  }
+}
