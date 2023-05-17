@@ -3,7 +3,7 @@
   "publisher": "DominikGawlik",
   "displayName": "spiral",
   "description": "Kakuone features, no modal editing",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.78.0"
   },
@@ -16,85 +16,85 @@
     "commands": [
       {
         "command": "spiral.select.nextword",
-        "title": "Spiral move one word forwards"
+        "title": "Spiral move one word forward"
       },
       {
         "command": "spiral.select.previousword",
-        "title": "Spiral move one word backwards"
+        "title": "Spiral move one word back"
       },
       {
         "command": "spiral.select.nextwordsep",
-        "title": "Spiral move one word forwards including separators"
+        "title": "Spiral move one word with separators forward"
       },
       {
         "command": "spiral.select.previouswordsep",
-        "title": "Spiral move one word backwards including separators"
+        "title": "Spiral move one word with separators back"
       },
       {
         "command": "spiral.select.nextblock",
-        "title": "Spiral move one block forwards"
+        "title": "Spiral move one block down"
       },
       {
         "command": "spiral.select.previousblock",
-        "title": "Spiral move one block back"
+        "title": "Spiral move one block up"
       },
       {
         "command": "spiral.select.tochar",
-        "title": "Spiral move to typed character"
+        "title": "Spiral select to character input"
       },
       {
         "command": "spiral.jump.tochar",
-        "title": "Spiral jump to typed character"
+        "title": "Spiral jump to character input"
       },
       {
         "command": "spiral.filter.selections",
-        "title": "Spiral filter selections"
+        "title": "Spiral create multicursor from filtered text"
       }
   ],
     "keybindings": [
       {
         "key": "Alt-Right",
-        "title": "Spiral move one word forwards",
+        "title": "Spiral move one word forward",
         "command": "spiral.select.nextword"
       },
       {
         "key": "Alt-Left",
-        "title": "Spiral move one word backwards",
+        "title": "Spiral move one word back",
         "command": "spiral.select.previousword"
       },
       {
         "key": "Alt-Shift-Right",
-        "title": "Spiral move one word forwards including separators",
+        "title": "Spiral move one word with separators forward",
         "command": "spiral.select.nextwordsep"
       },
       {
         "key": "Alt-Shift-Left",
-        "title": "Spiral move one word backwards including separators",
+        "title": "Spiral move one word with separators back",
         "command": "spiral.select.previouswordsep"
       },
       {
         "key": "Alt-Shift-Down",
-        "title": "Spiral move one blcok forwards",
+        "title": "Spiral move one block down",
         "command": "spiral.select.nextblock"
       },
       {
         "key": "Alt-Shift-Up",
-        "title": "Spiral move one blcok back",
+        "title": "Spiral move one block up",
         "command": "spiral.select.previousblock"
       },
       {
         "key": "Alt-f",
-        "title": "Spiral select to char inclusive",
+        "title": "Spiral select to character input",
         "command": "spiral.select.tochar"
       },
       {
         "key": "Alt-g",
-        "title": "Spiral jump to char inclusive",
+        "title": "Spiral jump to character input",
         "command": "spiral.jump.tochar"
       },
       {
         "key": "Alt-/",
-        "title": "Spiral filter selections",
+        "title": "Spiral create multicursor from filtered text",
         "command": "spiral.filter.selections"
       }
     ]
