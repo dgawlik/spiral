@@ -3,6 +3,10 @@
   "publisher": "DominikGawlik",
   "displayName": "spiral",
   "description": "Kakuone features, no modal editing",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dgawlik/spiral"
+  },
   "version": "0.0.2",
   "engines": {
     "vscode": "^1.78.0"
