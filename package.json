@@ -2,12 +2,12 @@
   "name": "spiral",
   "publisher": "DominikGawlik",
   "displayName": "spiral",
-  "description": "Kakuone features, no modal editing",
+  "description": "Kakoune features, no modal editing",
   "repository": {
     "type": "git",
     "url": "https://github.com/dgawlik/spiral"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.78.0"
   },
@@ -53,6 +53,18 @@
       {
         "command": "spiral.filter.selections",
         "title": "Spiral create multicursor from filtered text"
+      },
+      {
+        "command": "spiral.registers.put",
+        "title": "Spiral copy value to typed register"
+      },
+      {
+        "command": "spiral.registers.get",
+        "title": "Spiral insert value from typed register"
+      },
+      {
+        "command": "spiral.registers.list",
+        "title": "Spiral list registers, insert"
       }
   ],
     "keybindings": [
@@ -100,6 +112,21 @@
         "key": "Alt-/",
         "title": "Spiral create multicursor from filtered text",
         "command": "spiral.filter.selections"
+      },
+      {
+        "key": "Alt-x",
+        "title": "Spiral put to typed register num",
+        "command": "spiral.registers.put"
+      },
+      {
+        "key": "Alt-Shift-x",
+        "title": "Spiral get from typed register num",
+        "command": "spiral.registers.get"
+      },
+      {
+        "key": "Alt-Shift-v",
+        "title": "Spiral list registers, insert",
+        "command": "spiral.registers.list"
       }
     ]
   },

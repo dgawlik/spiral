@@ -24,3 +24,9 @@ This extension provides Kakuone like style of navigation with moving while selec
 `Alt-g` jump to character input
 
 `Alt-/` create multicursor from filtered text
+
+`Alt-x <char>` put to register
+
+`Alt-Shift-x <char>` paste from register
+
+`Alt-Shift-v` quick pick from registers, paste

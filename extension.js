@@ -5,21 +5,32 @@ const {
 
 } = require('./util');
 
+const {Registers} = require('./registers');
+
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+	
 
 	context.subscriptions.push(vscode.commands.registerCommand('spiral.select.nextword', () => selectNextWord(false)));
 	context.subscriptions.push(vscode.commands.registerCommand('spiral.select.previousword', () => selectPreviousWord(false)));
 	context.subscriptions.push(vscode.commands.registerCommand('spiral.select.nextwordsep', () => selectNextWord(true)));
 	context.subscriptions.push(vscode.commands.registerCommand('spiral.select.previouswordsep', () => selectPreviousWord(true)));
+
 	context.subscriptions.push(vscode.commands.registerCommand('spiral.select.nextblock', selectNextBlock));
 	context.subscriptions.push(vscode.commands.registerCommand('spiral.select.previousblock', selectPreviousBlock));
+
 	context.subscriptions.push(vscode.commands.registerCommand('spiral.select.tochar', () => selectToChar(context)));
 	context.subscriptions.push(vscode.commands.registerCommand('spiral.jump.tochar', () => jumpToChar(context)));
+
 	context.subscriptions.push(vscode.commands.registerCommand('spiral.filter.selections', filterSelections));
+
+	let registers = new Registers();
+	context.subscriptions.push(vscode.commands.registerCommand('spiral.registers.put', () => putToRegister(context, registers)));
+	context.subscriptions.push(vscode.commands.registerCommand('spiral.registers.get', () => getFromRegister(context, registers)));
+	context.subscriptions.push(vscode.commands.registerCommand('spiral.registers.list', async() =>  await getListFromRegister(registers)));
 }
 
 function moveLeftWhile(navigator, anchorOffset, activeOffset, predicate) {
@@ -254,6 +265,78 @@ async function filterSelections(){
 		}
 	}
 }
+
+function putToRegister(context, registers) {
+
+	const editor = vscode.window.activeTextEditor;
+
+	if (editor) {
+
+		let disposable = vscode.commands.registerCommand('type', function (args){
+			let char = args.text;
+
+			registers.updateRegister(char, editor.document.getText(editor.selection));
+
+			disposable.dispose();
+		});
+
+		context.subscriptions.push(disposable);
+	}
+}
+
+function getFromRegister(context, registers) {
+
+	const editor = vscode.window.activeTextEditor;
+
+	if (editor) {
+
+		let disposable = vscode.commands.registerCommand('type', function (args){
+			let char = args.text;
+			
+			getFromRegisterInternal(registers, editor, char, disposable);
+
+		});
+
+		context.subscriptions.push(disposable);
+	}
+}
+
+
+async function getListFromRegister(registers) {
+
+	const editor = vscode.window.activeTextEditor;
+
+	if (editor) {
+		let options = registers.listRegisters().map( el => ({label: `${el.id}: ${el.text}`, ...el}));
+
+		let selected = await vscode.window.showQuickPick(options);
+
+		if(selected){
+			getFromRegisterInternal(registers, editor, selected.id);
+		}
+	}
+}
+
+function getFromRegisterInternal(registers, editor, char, disposable) {
+	
+	let content = registers.getRegister(char);
+
+	
+	editor.edit(editBuilder => {
+		if(editor.document.getText(editor.selection)) {
+			editBuilder.replace(editor.selection, content);
+			editor.selection.anchor = editor.selection.active;
+		} else {
+			editBuilder.insert(editor.selection.active, content);
+		}
+		
+		if (disposable){
+			disposable.dispose();
+		}
+	});
+}
+
+
 
 
 
