@@ -54,7 +54,7 @@ function moveRightWhile(navigator, anchorOffset, activeOffset, predicate) {
 		}
 	} else {
 		while(anchorOffset < navigator.getLength()-1 && predicate(navigator.getText(anchorOffset+1, activeOffset))) {
-			activeOffset++;
+			anchorOffset++;
 		}
 	}
 
