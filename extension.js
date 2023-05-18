@@ -61,7 +61,7 @@ function selectNextWord(excludeSeparators) {
 		let predicates = new Predicates(editor.document.languageId);
 		let offset = navigator.positionToOffset(editor.selection.active);
 
-		while(offset < navigator.getLength()-1 && predicates.isAllBlanksOrSeparators(navigator.getText(offset, offset+1), false)) {
+		while(offset < navigator.getLength()-1 && predicates.isAllBlanksOrSeparators(navigator.getText(offset, offset+1), excludeSeparators)) {
 			offset++;
 		}
 		
@@ -83,7 +83,7 @@ function selectPreviousWord(excludeSeparators) {
 		let predicates = new Predicates(editor.document.languageId);
 		let offset = navigator.positionToOffset(editor.selection.active);
 
-		while(offset > 0 && predicates.isAllBlanksOrSeparators(navigator.getText(offset-1, offset), false)) {
+		while(offset > 0 && predicates.isAllBlanksOrSeparators(navigator.getText(offset-1, offset), excludeSeparators)) {
 			offset--;
 		}
 		
